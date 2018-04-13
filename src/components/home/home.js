@@ -1,8 +1,18 @@
-import template from './home.html';
+import angular from 'angular';
+import uiRouter from '@uirouter/angularjs';
 
-let homeComponent = {
-  bindings: {},
-  template,
-};
+import homeComponent from './home.component';
 
-export default homeComponent;
+let homeModule = angular.module('home', [ uiRouter ])
+  .config(($stateProvider, $urlServiceProvider) => {
+    $urlServiceProvider.rules.otherwise('/');
+
+    $stateProvider.state('home', {
+      url: '/',
+      component: 'home',
+    });
+  })
+  .component('home', homeComponent)
+  .name;
+
+export default homeModule;
