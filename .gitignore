@@ -5,3 +5,7 @@
 # Ops
 
 package-lock.json
+
+# Build
+
+/dist/
